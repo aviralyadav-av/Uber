@@ -1,12 +1,14 @@
-# User Registration Endpoint
+# User Authentication Endpoints
 
-## Endpoint
+## User Registration Endpoint
+
+### Endpoint
 `POST /users/register`
 
-## Description
+### Description
 This endpoint allows a new user to register by providing their email, password, and full name. Upon successful registration, a JSON Web Token (JWT) is generated and returned, which can be used for authentication in subsequent requests.
 
-## Request Body
+### Request Body
 The request body must be in JSON format and should contain the following fields:
 
 - `fullname`: An object containing the user's full name.
@@ -15,13 +17,37 @@ The request body must be in JSON format and should contain the following fields:
 - `email`: (string, required) The email address of the user. Must be a valid email format and at least 5 characters long.
 - `password`: (string, required) The password for the user account. Must be at least 6 characters long.
 
-### Example Request
+#### Example Request
 ```json
 {
   "fullname": {
     "firstname": "John",
     "lastname": "Doe"
   },
+  "email": "john.doe@example.com",
+  "password": "securePassword123"
+}
+```
+
+---
+
+## User Login Endpoint
+
+### Endpoint
+`POST /users/login`
+
+### Description
+This endpoint allows an existing user to log in by providing their email and password. Upon successful login, a JSON Web Token (JWT) is generated and returned, which can be used for authentication in subsequent requests.
+
+### Request Body
+The request body must be in JSON format and should contain the following fields:
+
+- `email`: (string, required) The email address of the user. Must be a valid email format and at least 5 characters long.
+- `password`: (string, required) The password for the user account. Must be at least 6 characters long.
+
+#### Example Request
+```json
+{
   "email": "john.doe@example.com",
   "password": "securePassword123"
 }
